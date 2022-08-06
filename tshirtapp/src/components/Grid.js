@@ -22,12 +22,7 @@ function Grid() {
     // </div>
     <div className="flex  h-screen ">
       <div className=" float-left w-1/4  ">
-        {/* <div className="text-xl">colour</div>
-        <div>White</div>
-        <div>Red</div>
-        <div className="text-xl">Type</div>
-        <div>Polo</div>
-        <div>Basic</div> */}
+      
 
         <h4 class=" m-4  px-5 font-semibold text-gray-900 dark:text-black ">
           Colour
