@@ -4,6 +4,7 @@ const api =
 
 function Grid() {
   const [product, setProduct] = useState([])
+  const [search, setSearch] = useState("")
   useEffect(() => {
     fetch(api)
       .then((res) => res.json())
@@ -85,7 +86,9 @@ function Grid() {
             </div>
           </li>
         </ul>
-        <h4 class="m-4  px-5 font-semibold text-gray-900 dark:text-black ">Type</h4>
+        <h4 class="m-4  px-5 font-semibold text-gray-900 dark:text-black ">
+          Type
+        </h4>
         <ul class="mx-4 text-sm font-medium text-black bg-white rounded-lg border border-gray-200 dark:bg-gray-200 dark:border-gray-600 ">
           <li class=" rounded-t-lg border-b border-gray-200 dark:border-gray-400">
             <div class="flex items-center pl-3 ">
@@ -152,61 +155,55 @@ function Grid() {
             placeholder="Search for Products..."
             type="text"
             name="search"
+            onChange={(event) => setSearch(event.target.value)}
           />
         </label>
         <body className="w-full  py-16 float-right  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10  ">
-          {/* <!-- grid container --> */}
+          {product
+            .filter((pro) => {
+              if (search === "") {
+                return pro
+              } else if (
+                pro.name.toLowerCase().includes(search.toLowerCase())
+              ) {
+                return pro
+              }
+            })
+            .map((pro, key) => {
+              return (
+                <div className=" px-2">
+                  <a
+                    href={pro.imageURL}
+                    className="flex flex-col bg-white drop-shadow hover:drop-shadow-lg hover:ring-opacity-20 rounded-md"
+                  >
+                    <img
+                      src={pro.imageURL}
+                      alt="Product"
+                      className="h-36 object-cover rounded-tl-md rounded-tr-md "
+                    />
 
-          {product.map((pro) => (
-            <div className=" px-2">
-              {/* <!-- product card --> */}
-              <a
-                href={pro.imageURL}
-                className="flex flex-col bg-white drop-shadow hover:drop-shadow-lg hover:ring-opacity-20 rounded-md"
-              >
-                <img
-                  src={pro.imageURL}
-                  alt="Product"
-                  className="h-36 object-cover rounded-tl-md rounded-tr-md "
-                />
-
-                <div className="px-3 py-2 ">
-                  <h1 className="font-semibold">{pro.name}</h1>
-                  <p className="text-sm">₹{pro.price}</p>
-                  <p className="text-sm bg-red-500 font-bold">
-                    Hurry..Only {pro.quantity} left!
-                  </p>
-                  <div className="flex justify-center">
-                    <button
-                      className="border-4 bg-gray-400 rounded-md hover:drop-shadow-lg hover:ring-opacity-60  "
-                      onClick={addToCart}
-                    >
-                      Add To Cart
-                    </button>
-                    <div className=" text-gray-300 hover:text-red-500 duration-300">
-                      &hearts;
+                    <div className="px-3 py-2 ">
+                      <h1 className="font-semibold">{pro.name}</h1>
+                      <p className="text-sm">₹{pro.price}</p>
+                      <p className="text-sm bg-red-500 font-bold">
+                        Hurry..Only {pro.quantity} left!
+                      </p>
+                      <div className="flex justify-center">
+                        <button
+                          className="border-4 bg-gray-400 rounded-md hover:drop-shadow-lg hover:ring-opacity-60  "
+                          onClick={addToCart}
+                        >
+                          Add To Cart
+                        </button>
+                        <div className=" text-gray-300 hover:text-red-500 duration-300">
+                          &hearts;
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  </a>
                 </div>
-              </a>
-              {/* product2 */}
-              {/* <a
-              href="https://www.kindacode.com"
-              className="flex flex-col bg-white drop-shadow hover:drop-shadow-lg hover:opacity-70 rounded-md"
-            >
-              <img
-                src="https://geektrust.s3.ap-southeast-1.amazonaws.com/coding-problems/shopping-cart/polo-tshirts.png"
-                alt="Fiction Product"
-                className="h-36 object-cover rounded-tl-md rounded-tr-md"
-              />
-
-              <div className="px-3 py-2">
-                <h1 className="font-semibold">Product One</h1>
-                <p className="text-sm">$69.69</p>
-              </div>
-            </a> */}
-            </div>
-          ))}
+              )
+            })}
         </body>
       </div>
     </div>
