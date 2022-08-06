@@ -85,7 +85,7 @@ function Grid() {
             </div>
           </li>
         </ul>
-        <h4 class=" mb-4 font-semibold text-gray-900 dark:text-black ">Type</h4>
+        <h4 class="m-4  px-5 font-semibold text-gray-900 dark:text-black ">Type</h4>
         <ul class="mx-4 text-sm font-medium text-black bg-white rounded-lg border border-gray-200 dark:bg-gray-200 dark:border-gray-600 ">
           <li class=" rounded-t-lg border-b border-gray-200 dark:border-gray-400">
             <div class="flex items-center pl-3 ">
