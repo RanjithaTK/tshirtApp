@@ -3,10 +3,13 @@ import Header from "./Header"
 
 function Cart() {
   return (
-    <div>
+    <div className=" justify-center items-center">
       <Header />
-      <div>Shopping Cart</div>
-      <div>Your Orders</div>
+      <div className="border-4 h-2/5 flex flex-col justify-center items-center mx-20">
+        <div>Shopping Cart</div>
+        <div>Your Orders</div>
+        <div>Your Orders</div>
+      </div>
     </div>
   )
 }
