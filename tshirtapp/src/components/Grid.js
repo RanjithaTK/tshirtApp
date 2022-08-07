@@ -22,8 +22,6 @@ function Grid() {
     // </div>
     <div className="flex  h-screen ">
       <div className=" float-left w-1/4  ">
-      
-
         <h4 class=" m-4  px-5 font-semibold text-gray-900 dark:text-black ">
           Colour
         </h4>
@@ -177,8 +175,8 @@ function Grid() {
                       className="h-36 object-cover rounded-tl-md rounded-tr-md "
                     />
 
-                    <div className="px-3 py-2 ">
-                      <h1 className="font-semibold">{pro.name}</h1>
+                    <div className="px-3 py-2 mx-4  ">
+                      <h1 className="font-semibold ">{pro.name}</h1>
                       <p className="text-sm">₹{pro.price}</p>
                       <p className="text-sm bg-red-500 font-bold">
                         Hurry..Only {pro.quantity} left!
@@ -190,7 +188,7 @@ function Grid() {
                         >
                           Add To Cart
                         </button>
-                        <div className=" text-gray-300 hover:text-red-500 duration-300">
+                        <div className=" text-gray-300 hover:text-red-500 duration-300 flex just">
                           &hearts;
                         </div>
                       </div>
